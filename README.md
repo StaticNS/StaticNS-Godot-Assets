@@ -1,5 +1,9 @@
 # StaticNS Godot Assets
 
-git clone https://github.com/StaticNS/StaticNS-Godot-Assets.git
-cd StaticNS-Godot-Assets
-git filter-branch --prune-empty --subdirectory-filter assets master
+>git remote add assets https://github.com/StaticNS/StaticNS-Godot-Assets.git
+>git -C assets/ pull assets master --allow-unrelated-histories
+>git add .
+>git commit -m "added godot assets fork"
+>git push origin master
+>git fetch --all
+>git -C assets/ pull assets master

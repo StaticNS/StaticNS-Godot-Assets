@@ -1,2 +1,5 @@
 # StaticNS Godot Assets
- Some assets I want to make reusable for other projects yay
+
+git clone https://github.com/StaticNS/StaticNS-Godot-Assets.git
+cd StaticNS-Godot-Assets
+git filter-branch --prune-empty --subdirectory-filter assets master

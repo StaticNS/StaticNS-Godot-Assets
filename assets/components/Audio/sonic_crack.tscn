@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dnbc82r6l1pkd"]
+
+[ext_resource type="PackedScene" uid="uid://cq74ajiqu7ygs" path="" id="1_li503"]
+[ext_resource type="Script" path="res://assets/components/Audio/sonic_crack.gd" id="1_li733"]
+[ext_resource type="AudioStream" uid="uid://cqr0yxmnfi2w6" path="" id="2_acktp"]
+
+[node name="SonicCrack" type="Node2D" node_paths=PackedStringArray("audioEmitter")]
+script = ExtResource("1_li733")
+audioEmitter = NodePath("AudioEmitter")
+
+[node name="AudioEmitter" parent="." instance=ExtResource("1_li503")]
+stream = ExtResource("2_acktp")
+max_polyphony = 1
+volume = 0.0
+pitchScale = 1.0
+speedOfSound = 343.0
+dopplerEffect = false
+sonicBoom = false
+
+[connection signal="finished" from="AudioEmitter" to="." method="_on_audio_emitter_finished"]

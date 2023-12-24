@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bo08lmqpyhyi1"]
+
+[ext_resource type="Script" path="res://assets/components/Node2D/audio_observer.gd" id="1_4acxs"]
+
+[node name="AudioObserver" type="AudioListener2D" groups=["audio_observer"]]
+current = true
+script = ExtResource("1_4acxs")

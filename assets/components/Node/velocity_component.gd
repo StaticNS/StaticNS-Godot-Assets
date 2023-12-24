@@ -10,7 +10,7 @@ extends Node
 	set(accelCoe):
 		accelerationCoefficient = accelCoe
 	get:
-		return accelerationCoefficient
+		return accelerationCoefficient * 10
 
 @export var debugMode: bool = false
 

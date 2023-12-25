@@ -4,6 +4,6 @@
 
 [node name="AudioEmitter" type="AudioStreamPlayer2D"]
 max_distance = 1000.0
-attenuation = 5.0
-max_polyphony = 2
 script = ExtResource("1_2yy3s")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

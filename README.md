@@ -5,5 +5,6 @@
 >git add .
 >git commit -m "added godot assets fork"
 >git push origin master
+
 >git fetch --all
 >git -C assets/ pull assets master

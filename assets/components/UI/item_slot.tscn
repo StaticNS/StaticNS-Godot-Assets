@@ -22,5 +22,5 @@ text = "Test Item"
 [node name="AmountLabel" type="Label" parent="HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "8
+text = "64
 "

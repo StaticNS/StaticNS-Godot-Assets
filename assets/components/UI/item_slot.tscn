@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmwq3cmbbcut0"]
+
+[ext_resource type="Texture2D" uid="uid://ddttdblrpip0x" path="res://assets/textures/icon.svg" id="1_b0arb"]
+[ext_resource type="Script" path="res://assets/components/UI/item_slot.gd" id="1_n2dgl"]
+
+[node name="ItemSlot" type="PanelContainer"]
+script = ExtResource("1_n2dgl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("1_b0arb")
+
+[node name="NameLabel" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Test Item"
+
+[node name="AmountLabel" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "8
+"

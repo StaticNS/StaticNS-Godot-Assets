@@ -8,9 +8,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3iay"]
 size = Vector2(16, 16)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("velocityComponent")]
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_xhxt1")
-velocityComponent = NodePath("VelocityComponent")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_i3iay")
@@ -21,7 +20,6 @@ texture = ExtResource("1_u3gri")
 
 [node name="VelocityComponent" type="Node" parent="."]
 script = ExtResource("3_0bfe4")
-maxSpeed = 10.0
 
 [node name="Camera" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)

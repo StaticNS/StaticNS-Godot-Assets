@@ -1,7 +1,7 @@
 class_name VelocityComponent
 extends Node
 
-@export var max_speed : float = 100:
+@export var max_speed : float = 10:
 	set(maxSpd):
 		max_speed = maxSpd
 	get:
@@ -65,7 +65,7 @@ func accelerate_to_velocity(velocity: Vector2):
 			1.00 - accel_time, 
 			get_process_delta_time() * 4.00
 	))
-	velocity = velocity.lerp(velocity, blend) 
+	self.velocity = velocity.lerp(velocity, blend) 
 
 
 ## Similar to accelerate_to_velocity, but for directions instead. 
@@ -97,7 +97,7 @@ func decelerate():
 
 ## Must be called if you want the velocity to be applied to the parent.[br]
 ## [param character_body] CharacterBody2D to have velocity applied to.
-func move(character_body: CharacterBody2D):
+func move(character_body : CharacterBody2D):
 	character_body.velocity = velocity
 	character_body.move_and_slide()
 

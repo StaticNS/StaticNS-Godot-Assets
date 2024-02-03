@@ -35,8 +35,8 @@ var acceleration_coefficient_multiplier : float = 1.00:
 		return acceleration_coefficient_multiplier
 
 var _speed_percent = func():
-	var max_speed = _calculated_max_speed.call()
-	min(velocity.length() / (max_speed if max_speed > 0.00 else 1.00), 1.00)
+	var max_spd = _calculated_max_speed.call()
+	min(velocity.length() / (max_spd if max_spd > 0.00 else 1.00), 1.00)
 var _calculated_max_speed = func() -> float:
 	return max_speed * (1.00 + speed_percent_modifier.call()) * speed_multiplier
 var _speed_percent_modifiers : Dictionary = {}
@@ -57,15 +57,12 @@ func _process(delta):
 
 ## Accelerates to given velocity with the components stats. 
 ## DOES NOT MOVE PARENT[br]
-## [param velocity] velocity you want to accel to.
-func accelerate_to_velocity(velocity: Vector2):
+## [param vel] velocity you want to accel to.
+func accelerate_to_velocity(vel: Vector2):
 	var accel_time : float = -acceleration_coefficient\
 			 * acceleration_coefficient_multiplier
-	var blend : float = -(1.00 - pow(
-			1.00 - accel_time, 
-			get_process_delta_time() * 4.00
-	))
-	self.velocity = velocity.lerp(velocity, blend) 
+	var blend : float = -(1.00 - pow(1.00 - accel_time, get_process_delta_time() * 4.00))
+	velocity = velocity.lerp(vel, blend) 
 
 
 ## Similar to accelerate_to_velocity, but for directions instead. 
@@ -103,32 +100,32 @@ func move(character_body : CharacterBody2D):
 
 
 ## Adds a percent modifier to the total max speed (stacks).[br]
-## [param name] name of the modifier for later access,[br]
+## [param modifier_name] name of the modifier for later access,[br]
 ## [param change] the amount of change (in percent) wanted to apply to the maxspeed.
-func add_speed_percent_modifier(name: String, change: float):
-	if _speed_percent_modifiers.has(name):
-		change += _speed_percent_modifiers[name]
-	_speed_percent_modifiers[name] = change
+func add_speed_percent_modifier(modifier_name: String, change: float):
+	if _speed_percent_modifiers.has(modifier_name):
+		change += _speed_percent_modifiers[modifier_name]
+	_speed_percent_modifiers[modifier_name] = change
 
 
 ## Sets a percent modifier potetially replacing previous modifiers.[br]
-## [param name] name of the modifier to be set,[br]
+## [param modifier_name] name of the modifier to be set,[br]
 ## [param change] the amount of change (in percent) wanted to apply to the maxspeed.
-func set_speed_percent_modifier(name: String, change: float):
-	_speed_percent_modifiers[name] = change
+func set_speed_percent_modifier(modifier_name: String, change: float):
+	_speed_percent_modifiers[modifier_name] = change
 
 
 ## Gets a percent modifier value from its name.[br]
 ## [param name] name of the modifier to be retrieved.[br]
 ## Returns the value of the speed percent modifier
-func get_speed_percent_modifier(name: String) -> float:
-	if _speed_percent_modifiers.has(name):
-		return _speed_percent_modifiers[name]
+func get_speed_percent_modifier(modifier_name: String) -> float:
+	if _speed_percent_modifiers.has(modifier_name):
+		return _speed_percent_modifiers[modifier_name]
 		
 	print("Dictionary \"_speed_percent_modifiers\" does not contain key: \"" + name + "\"")
 	return 0.00
 
 
 ## Debug draw call.
-func _on_debug_draw(owner: Node2D):
-	owner.draw_line(Vector2.ZERO, velocity, Color.CYAN, 2.00)
+func _on_debug_draw(ownr: Node2D):
+	ownr.draw_line(Vector2.ZERO, velocity, Color.CYAN, 2.00)

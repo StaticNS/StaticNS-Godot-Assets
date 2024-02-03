@@ -61,7 +61,7 @@ func _process(delta):
 func accelerate_to_velocity(vel: Vector2):
 	var accel_time : float = -acceleration_coefficient\
 			 * acceleration_coefficient_multiplier
-	var blend : float = -(1.00 - pow(1.00 - accel_time, get_process_delta_time() * 4.00))
+	var blend : float = -(1.0 - exp(-accel_time * get_process_delta_time()))
 	velocity = velocity.lerp(vel, blend) 
 
 

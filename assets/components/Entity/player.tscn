@@ -1,28 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://dkiweey07b0sf"]
+[gd_scene load_steps=7 format=3 uid="uid://dkiweey07b0sf"]
 
-[ext_resource type="Texture2D" uid="uid://cqgmi4m7iwvlb" path="res://assets/textures/icon.svg" id="1_u3gri"]
 [ext_resource type="Script" path="res://assets/components/Entity/player.gd" id="1_xhxt1"]
+[ext_resource type="Texture2D" uid="uid://tcw3mljsjqkn" path="res://assets/textures/icon.svg" id="2_tt7q3"]
 [ext_resource type="Script" path="res://assets/components/Node/velocity_component.gd" id="3_0bfe4"]
 [ext_resource type="PackedScene" uid="uid://bo08lmqpyhyi1" path="res://assets/components/Node2D/audio_observer.tscn" id="4_ak6uk"]
+[ext_resource type="PackedScene" uid="uid://hjqip2ylmrg8" path="res://assets/components/Node2D/controlled_camera.tscn" id="5_xv7kr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i3iay"]
 size = Vector2(16, 16)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("velocity_component")]
 script = ExtResource("1_xhxt1")
+velocity_component = NodePath("VelocityComponent")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_i3iay")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(0.125, 0.125)
-texture = ExtResource("1_u3gri")
+texture = ExtResource("2_tt7q3")
 
 [node name="VelocityComponent" type="Node" parent="."]
 script = ExtResource("3_0bfe4")
 
-[node name="Camera" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
+[node name="AudioObserver" parent="." node_paths=PackedStringArray("velocity_component") instance=ExtResource("4_ak6uk")]
+velocity_component = NodePath("../VelocityComponent")
 
-[node name="AudioObserver" parent="." node_paths=PackedStringArray("velocityComponent") instance=ExtResource("4_ak6uk")]
-velocityComponent = NodePath("../VelocityComponent")
+[node name="ControlledCamera" parent="." instance=ExtResource("5_xv7kr")]
